@@ -1,97 +1,56 @@
-import Button from '@atlaskit/button';
-import Calendar from '@atlaskit/calendar';
-import Textfield from '@atlaskit/textfield';
-import DynamicTable from '@atlaskit/dynamic-table';
 import "./style.css";
-
-const days = ['Time', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-
+import * as React from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Avatar from '@mui/material/Avatar';
 
 function RegistBadminton() {
 
-    const head = {
-        cells: days.map((day) => ({
-            key: day,
-            content: day,
-        })),
-    };
-
-    const rows = [
-        {
-            key: `morning-row`,
-            cells: ['9:00', 'Math', 'History', 'Science', 'Computing', 'Math'].map(
-                (content, index) => ({
-                    key: index,
-                    content,
-                }),
-            ),
-        },
-        {
-            key: 'midday-row',
-            cells: [
-                {
-                    key: 0,
-                    content: '12:00',
-                },
-                {
-                    key: 1,
-                    content: 'LUNCH',
-                    colSpan: 5,
-                },
-            ],
-        },
-        {
-            key: 'afternoon-row',
-            cells: [
-                '13:00',
-                'Science',
-                'History',
-                'Psychology',
-                'Computing',
-                'Business',
-            ].map((content, index) => ({
-                key: index,
-                content,
-            })),
-        },
-    ];
-
-
     return (
-        <div className='page-body'>
-            <div className='card'>
-                <Calendar
-                    className='calendar'
-                    defaultMonth={1}
-                    defaultYear={2024}
-                    testId={'calendar'}
-                    disabled='true'
-                />
-                <div className='form'>
-                    <div className='input-name'>
-                        <div className='input'>
-                            <Textfield
-                                appearance="standard"
-                                placeholder="ชื่อจ้า"
-                                style={{ height: "30px" ,borderRadius: "16px"}}
-                            />
-                        </div>
-                        <div className='btn'>
-                            <Button appearance="primary" shouldFitContainer >เพิ่มชื่อเลยจ้า</Button>
-                        </div>
-                    </div>
-                    <DynamicTable
-                        head={head}
-                        rows={rows}
-                        rowsPerPage={5}
-                        defaultPage={1}
-                        loadingSpinnerSize="large"
-                        isRankable
-                    />
-                </div>
+        <Card className='card' sx={{ display: 'flex', boxShadow: 3, borderRadius: 3}}>
+            <Box sx={{ padding: { md: 3, xs: 1 }, width: {md:500}, display: 'flex', flexDirection: 'column' }}>
+                <Stack
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={{md:2, xs:1}}
+                >
+                    <TextField fullWidth id="outlined-basic" label="ชื่อจ้า" variant="outlined" size="small" />
 
-            </div>
-        </div>
+                    <Button variant="contained" sx={{ minWidth: '160px' }}>เพิ่มจ้า</Button>
+                </Stack>
+                <List dense sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                    {[0, 1, 2, 3].map((value) => {
+                        const labelId = `checkbox-list-secondary-label-${value}`;
+                        return (
+                            <ListItem
+                                key={value}
+                                disablePadding
+                            >
+                                <ListItemButton>
+                                    <ListItemAvatar>
+                                        <Avatar
+                                            alt={`Avatar n°${value + 1}`}
+                                            src={`/static/images/avatar/${value + 1}.jpg`}
+                                        />
+                                    </ListItemAvatar>
+                                    <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+                                </ListItemButton>
+                            </ListItem>
+                        );
+                    })}
+                </List>
+
+            </Box>
+        </Card>
     );
 }
 

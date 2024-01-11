@@ -12,10 +12,18 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-app-body {
+.bg-wrap{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.25;
+}
+body {
   min-height: 100vh;
-  background: #FAFAFD;
+  background-color: rgb(243, 246, 249,0.6);
   display: flex;
   align-items: center;
   flex-direction: column;
