@@ -4,13 +4,13 @@
     inherits: false;
 }
 
-.page-body{
+.page-body {
     width: 100%;
     display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 
@@ -49,6 +49,32 @@
     transition: opacity .2s;
     animation: spin 6s linear infinite;
 }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.input-name {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+
+    .input {
+        flex-grow: 5;
+    }
+
+    .btn {
+        flex-grow: 1;
+    }
+}
+.css-1s25hsw,.css-pgswku-ButtonBase {
+    border-radius: 8px !important;
+}    
+
 
 .calendar {
     width: fit-content;
