@@ -12,7 +12,6 @@ import TextField from '@mui/material/TextField';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 function RegistBadminton() {
 
