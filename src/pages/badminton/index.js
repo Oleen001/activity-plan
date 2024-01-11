@@ -21,7 +21,7 @@ function RegistBadminton() {
             <div class="card4">
                 <div class="top-content">
                     <div class="header">
-                        B A D M I N T O N • T I C K E T
+                        • B A D M I N T O N • T I C K E T •
                     </div>
                     <Box sx={{ padding: { md: 3, xs: 1 }, width: { md: 500 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <Typography color="#4B6889" fontWeight={600} variant="h4" component="div">
@@ -30,6 +30,7 @@ function RegistBadminton() {
                     </Box>
                     <Chip href="https://maps.app.goo.gl/5HiU8w7CMSzupG7y9" className="location" size="small" label="คณัสนันท์ คอร์ดแบดมินตัน" />
                 </div>
+
                 <div class="mid-content">
                     <div class="left-notch"></div>
                     <div class="rip">
