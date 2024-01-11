@@ -7,8 +7,7 @@
   
   
   .card {
-    color: rgb(88 199 250 / 80%);
-    box-shadow: 0px 5px 15px rgba(56, 69, 76, 0.1);
+    color: #2E4B6B;
   }
   
   
@@ -17,7 +16,7 @@
     content: "";
     
     z-index: -1;
-    height: 40vh;
+    height: 65vh;
     width: 65vh;
     margin: 0 auto;
     transform: scale(1.2);
@@ -39,4 +38,70 @@
     }
   }
   
+  .card4 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
   
+  .top-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .header{
+        color: #ffffff50;
+        background: #2E4B6B;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .location{
+        color: #82A1C4 !important;
+        background-color: #D9E9FB;
+    }
+    background: white;
+  }
+
+  .mid-content {
+    display: flex;
+    flex-direction: row;
+
+    .left-notch {
+      background: white;
+      width: 12px;
+      height: 24px;
+      clip-path: path(
+        "M16 -8H-4V0.682823C-2.74888 0.240617 -1.40254 0 0 0C6.62742 0 12 5.37258 12 12C12 18.6274 6.62742 24 0 24C-1.40254 24 -2.74888 23.7594 -4 23.3172V32H16V-8Z"
+      );
+    }
+
+    .rip {
+      flex-grow: 1;
+      background: white;
+      display: flex;
+      align-items: center;
+
+      .dash {
+        width: 100%;
+        border-top: 1px dashed rgba(0, 0, 0, 0.16);
+      }
+    }
+
+    .right-notch {
+      background: white;
+      width: 12px;
+      height: 24px;
+      clip-path: path(
+        "M16 -8H-4V32H16V23.3172C14.7489 23.7594 13.4025 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C13.4025 0 14.7489 0.240617 16 0.682823V-8Z"
+      );
+    }
+  }
+
+  .bot-content {
+    background: white;
+  }
+}
