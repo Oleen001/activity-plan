@@ -93,10 +93,13 @@ function RegistBadminton() {
         try {
             getUsers();
         } catch (err) {
-            console.error(err);
+            console.log(err);
         }
-    }, [latestName, data]);
+    }, [latestName]);
+    
+    useEffect(() => {
 
+    }, [data]);
 
 
     return (
