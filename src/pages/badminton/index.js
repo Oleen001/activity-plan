@@ -17,19 +17,27 @@ import axios from "axios";
 
 
 function RegistBadminton() {
-   
-    
+
+
     const [data, setData] = useState();
-    
+
     const fetchAPI = async () => {
-        const res = await axios.get("https://oleen-activity.cyclic.app/api/users");
-        setData(res.data);
+        const res = await axios.get("https://oleen-activity.cyclic.app/api/users/latestNames");
+        // const res = await axios.get("https://randomfox.ca/floof/");
+        setData(res);
+        console.log(res);
     }
-
-
+    
+    
     useEffect(() => {
-        fetchAPI();
-        console.log("No CORS---->>",data);
+        setData(123);
+        try {
+            fetchAPI();
+            console.log("No CORS---->>");
+        }
+        catch(err){
+            console.log(err);
+        }
     }, [])
 
     return (
@@ -41,7 +49,7 @@ function RegistBadminton() {
                     </div>
                     <Box sx={{ padding: { md: 3, xs: 1 }, width: { md: 500 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <Typography color="#4B6889" fontWeight={600} variant="h4" component="div">
-                            16 Jan 2023
+                            16 Jan 2023{data}
                         </Typography>
                     </Box>
                     <Chip href="https://maps.app.goo.gl/5HiU8w7CMSzupG7y9" className="location" size="small" label="คณัสนันท์ คอร์ดแบดมินตัน" />
