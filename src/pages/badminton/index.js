@@ -37,7 +37,6 @@ function RegistBadminton() {
     const getUsers = async () => {
         try {
             const res = await axios.get(`https://oleen-activity.cyclic.app/api/users/`);
-            console.log(res.data.results);
             setData(res.data.results);
         } catch (err) {
             console.error(err);
@@ -67,7 +66,6 @@ function RegistBadminton() {
 
     function handleDelete(id) {
         deleteUser(id);
-        console.log('delete->', id);
     }
 
     function handleAdd(name, imgURL) {
@@ -76,7 +74,6 @@ function RegistBadminton() {
             img: imgURL
         }
         addUser(user);
-        console.log('added', user);
     }
     function handleInputChange(event) {
         setNewUserName(event.target.value);
@@ -88,21 +85,18 @@ function RegistBadminton() {
     }
 
 
+    const generateSeed = (name) => {
+        return name.toLowerCase(); // You can customize this as needed
+    };
 
     useEffect(() => {
         try {
             getUsers();
-            console.log(data);
+        } catch (err) {
+            console.error(err);
         }
-        catch (err) {
-            console.log(err);
-        }
-    }, [latestName])
+    }, [latestName, data]);
 
-
-    const generateSeed = (name) => {
-        return name.toLowerCase(); // You can customize this as needed
-    };
 
 
     return (
