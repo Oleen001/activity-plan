@@ -12,8 +12,25 @@ import TextField from '@mui/material/TextField';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 
 function RegistBadminton() {
+   
+    
+    const [data, setData] = useState();
+    
+    const fetchAPI = async () => {
+        const res = await axios.get("https://oleen-activity.cyclic.app/api/users");
+        setData(res.data);
+    }
+
+
+    useEffect(() => {
+        fetchAPI();
+        console.log("No CORS---->>",data);
+    }, [])
 
     return (
         <div className='card' sx={{ display: 'flex', flexDirection: 'column', borderRadius: 3 }}>
