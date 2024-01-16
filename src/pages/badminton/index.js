@@ -13,13 +13,16 @@ import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { IconButton } from "@mui/material";
+import { IconButton, LinearProgress } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import DiceBearAvatar from "../avatar";
 
 
 function RegistBadminton() {
     const [newUserName, setNewUserName] = useState('');
+    const [progress, setProgress] = useState(0);
+    const [loading, setLoading] = useState(false);
+
     const getLatestName = async () => {
         try {
             const res = await axios.get("https://oleen-activity.cyclic.app/api/users/latestName");
@@ -45,15 +48,22 @@ function RegistBadminton() {
     }
     const deleteUser = async (id) => {
         try {
+            setLoading(true);
+            setProgress(0);
             await axios.delete(`https://oleen-activity.cyclic.app/api/users/${id}`);
             getLatestName();
         } catch (err) {
             console.error(err);
+        } finally {
+            setLoading(false);
+            setProgress(97);
         }
     }
     const addUser = async (user) => {
         const { name, img } = user;
         try {
+            setLoading(true);
+            setProgress(0);
             await axios.post("https://oleen-activity.cyclic.app/api/users/", {
                 name: name,
                 img: img // Assuming 'img' is a URL to the user's image
@@ -61,6 +71,9 @@ function RegistBadminton() {
             getLatestName();
         } catch (err) {
             console.error(err);
+        } finally {
+            setLoading(false);
+            setProgress(97);
         }
     }
 
@@ -89,6 +102,8 @@ function RegistBadminton() {
         return name.toLowerCase(); // You can customize this as needed
     };
 
+
+
     useEffect(() => {
         try {
             getUsers();
@@ -96,10 +111,29 @@ function RegistBadminton() {
             console.log(err);
         }
     }, [latestName]);
-    
+
     useEffect(() => {
 
     }, [data]);
+
+    useEffect(() => {
+        let progressInterval;
+        if (loading) {
+            progressInterval = setInterval(() => {
+                setProgress((oldProgress) => {
+                  const diff = Math.random() * 50;
+                  console.log(Math.min(oldProgress + diff, 95));
+                  return Math.min(oldProgress + diff, 95);
+                });
+              }, 100);
+        } else {
+            clearInterval(progressInterval);
+        }
+
+        return () => {
+            clearInterval(progressInterval);
+        };
+    }, [loading]);
 
 
     return (
@@ -109,6 +143,9 @@ function RegistBadminton() {
                     <div class="header">
                         • B A D M I N T O N • T I C K E T •
                     </div>
+                    <Box sx={{ width: '100%' }}>
+                        {loading && <LinearProgress variant="determinate" value={progress} />}
+                    </Box>
                     <Box sx={{ padding: { md: 3, xs: 1 }, width: { md: 500 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <Typography color="#4B6889" fontWeight={600} variant="h4" component="div">
                             {latestName?.key}
