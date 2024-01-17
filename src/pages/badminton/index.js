@@ -121,11 +121,11 @@ function RegistBadminton() {
         if (loading) {
             progressInterval = setInterval(() => {
                 setProgress((oldProgress) => {
-                  const diff = Math.random() * 50;
-                  console.log(Math.min(oldProgress + diff, 95));
-                  return Math.min(oldProgress + diff, 95);
+                    const diff = Math.random() * 50;
+                    console.log(Math.min(oldProgress + diff, 95));
+                    return Math.min(oldProgress + diff, 95);
                 });
-              }, 100);
+            }, 100);
         } else {
             clearInterval(progressInterval);
         }
@@ -137,86 +137,94 @@ function RegistBadminton() {
 
 
     return (
-        <div className='card' sx={{ display: 'flex', flexDirection: 'column', borderRadius: 3 }}>
-            <div class="card4">
-                <div class="top-content">
-                    <div class="header">
-                        • B A D M I N T O N • T I C K E T •
+        <div className="card-wrapper">
+            <div className="bg-card bg1"></div>
+            <div className="bg-card bg2"></div>
+            <div className="bg-card bg3"></div>
+            <div className='card' sx={{ display: 'flex', flexDirection: 'column', borderRadius: 3 }}>
+                <div class="card4">
+                    <div class="top-content">
+                        <div class="header">
+                            • B A D M I N T O N • T I C K E T •
+                        </div>
+                        <Box sx={{ width: '100%' }}>
+                            {loading && <LinearProgress variant="determinate" value={progress} />}
+                        </Box>
+                        <Box sx={{ padding: { md: 3, xs: 1 }, width: { md: 500 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                            <Typography color="#4B6889" fontWeight={600} variant="h4" component="div">
+                                {latestName?.key}
+                            </Typography>
+                        </Box>
+                        <a href="https://maps.app.goo.gl/5HiU8w7CMSzupG7y9" target="_blank" rel="noopener noreferrer">
+                            <Chip href="https://maps.app.goo.gl/5HiU8w7CMSzupG7y9" className="location" size="small" label={"คณัสนันท์ คอร์ดแบดมินตัน"} />
+                        </a>
+
                     </div>
-                    <Box sx={{ width: '100%' }}>
-                        {loading && <LinearProgress variant="determinate" value={progress} />}
-                    </Box>
-                    <Box sx={{ padding: { md: 3, xs: 1 }, width: { md: 500 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <Typography color="#4B6889" fontWeight={600} variant="h4" component="div">
-                            {latestName?.key}
-                        </Typography>
-                    </Box>
-                    <a href="https://maps.app.goo.gl/5HiU8w7CMSzupG7y9" target="_blank" rel="noopener noreferrer">
-                        <Chip href="https://maps.app.goo.gl/5HiU8w7CMSzupG7y9" className="location" size="small" label={"คณัสนันท์ คอร์ดแบดมินตัน"} />
-                    </a>
 
-                </div>
-
-                <div class="mid-content">
-                    <div class="left-notch"></div>
-                    <div class="rip">
-                        <div class="dash"></div>
+                    <div class="mid-content">
+                        <div class="left-notch"></div>
+                        <div class="rip">
+                            <div class="dash"></div>
+                        </div>
+                        <div class="right-notch"></div>
                     </div>
-                    <div class="right-notch"></div>
-                </div>
-                <div class="bot-content">
-                    <Box sx={{ padding: { md: 3, xs: 1 }, width: { md: 500 }, display: 'flex', flexDirection: 'column' }}>
+                    <div class="bot-content">
+                        <Box sx={{ padding: { md: 3, xs: 1 }, width: { md: 500 }, display: 'flex', flexDirection: 'column' }}>
 
-                        <Stack
-                            direction="row"
-                            justifyContent="center"
-                            alignItems="center"
-                            spacing={{ md: 2, xs: 1 }}
-                        >
-                            <TextField
-                                fullWidth
-                                id="outlined-basic"
-                                label="ชื่อจ้า"
-                                variant="outlined"
-                                size="small"
-                                value={newUserName}
-                                onChange={handleInputChange}
-                            />
-
-                            <Button
-                                variant="contained"
-                                sx={{ minWidth: '160px' }}
-                                onClick={handleAddClick} // Attach an onClick handler
+                            <Stack
+                                direction="row"
+                                justifyContent="center"
+                                alignItems="center"
+                                spacing={{ md: 2, xs: 1 }}
                             >
-                                เพิ่มจ้า
-                            </Button>
-                        </Stack>
-                        <List dense sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                            {data.map((data) => {
-                                const labelId = data.key;
-                                return (
-                                    <ListItem
-                                        key={data.key}
-                                        disablePadding
-                                    >
-                                        <ListItemButton>
-                                            <ListItemAvatar sx={{ mr: { md: 2, xs: 1 }, minWidth: '40px', borderRadius: '100%', overflow: 'hidden', backgroundColor: '#cdecf9' }}>
-                                                <DiceBearAvatar seed={generateSeed(data.key)} />
-                                            </ListItemAvatar>
-                                            <ListItemText id={labelId} primary={data.props.name} />
-                                            <IconButton aria-label="delete" size="large" onClick={() => handleDelete(labelId)}>
-                                                <DeleteIcon />
-                                            </IconButton>
+                                <TextField
+                                    fullWidth
+                                    id="outlined-basic"
+                                    label="ชื่อจ้า"
+                                    variant="outlined"
+                                    size="small"
+                                    value={newUserName}
+                                    onChange={handleInputChange}
+                                />
 
-                                        </ListItemButton>
-                                    </ListItem>
-                                );
-                            })}
-                        </List>
-                    </Box>
+                                <Button
+                                    variant="contained"
+                                    sx={{ minWidth: '160px' }}
+                                    onClick={handleAddClick} // Attach an onClick handler
+                                >
+                                    เพิ่มจ้า
+                                </Button>
+                            </Stack>
+                            <List dense sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                                {data.map((data) => {
+                                    const labelId = data.key;
+                                    return (
+                                        <ListItem
+                                            key={data.key}
+                                            disablePadding
+                                        >
+                                            <ListItemButton>
+                                                <ListItemAvatar sx={{ mr: { md: 2, xs: 1 }, minWidth: '40px', borderRadius: '100%', overflow: 'hidden', backgroundColor: '#cdecf9' }}>
+                                                    <DiceBearAvatar seed={generateSeed(data.key)} />
+                                                </ListItemAvatar>
+                                                <ListItemText id={labelId} primary={data.props.name} />
+                                                <IconButton aria-label="delete" size="large" onClick={() => handleDelete(labelId)}>
+                                                    <DeleteIcon />
+                                                </IconButton>
+
+                                            </ListItemButton>
+                                        </ListItem>
+                                    );
+                                })}
+                            </List>
+                        </Box>
+                    </div>
                 </div>
             </div>
+            
+
         </div>
+
     );
 }
 
