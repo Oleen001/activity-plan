@@ -1,19 +1,8 @@
 import "./style.css";
 import * as React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import Chip from '@mui/material/Chip';
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { IconButton, LinearProgress } from "@mui/material";
+import { IconButton, LinearProgress, Skeleton, Chip, Typography, TextField, Stack, Button, Box, ListItemAvatar, ListItemText, ListItemButton, ListItem, List } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import DiceBearAvatar from "../avatar";
 
@@ -22,6 +11,7 @@ function RegistBadminton() {
     const [newUserName, setNewUserName] = useState('');
     const [progress, setProgress] = useState(0);
     const [loading, setLoading] = useState(false);
+    const [usersLoading, setUsersLoading] = useState(false);
 
     const getLatestName = async () => {
         try {
@@ -39,11 +29,23 @@ function RegistBadminton() {
 
     const getUsers = async () => {
         try {
+            setUsersLoading(true);
             const res = await axios.get(`https://oleen-activity.cyclic.app/api/users/`);
             setData(res.data.results);
         } catch (err) {
             console.error(err);
+        } finally {
+            setUsersLoading(false);
         }
+
+    }
+    function userSkeleton() {
+        return (<ListItem disablePadding>
+            <ListItemButton>
+                <Skeleton variant="circular" animation="wave" width={40} height={40} sx={{ mr: { md: 2, xs: 1 } }} />
+                <Skeleton variant="rounded" animation="wave" width="100%" height={40} />
+            </ListItemButton>
+        </ListItem>)
 
     }
     const deleteUser = async (id) => {
@@ -51,7 +53,7 @@ function RegistBadminton() {
             setLoading(true);
             setProgress(0);
             await axios.delete(`https://oleen-activity.cyclic.app/api/users/${id}`);
-            getLatestName();
+            getUsers();
         } catch (err) {
             console.error(err);
         } finally {
@@ -68,7 +70,7 @@ function RegistBadminton() {
                 name: name,
                 img: img // Assuming 'img' is a URL to the user's image
             });
-            getLatestName();
+            getUsers();
         } catch (err) {
             console.error(err);
         } finally {
@@ -110,7 +112,7 @@ function RegistBadminton() {
         } catch (err) {
             console.log(err);
         }
-    }, [latestName]);
+    }, []);
 
     useEffect(() => {
 
@@ -151,9 +153,10 @@ function RegistBadminton() {
                             {loading && <LinearProgress variant="determinate" value={progress} />}
                         </Box>
                         <Box sx={{ padding: { md: 3, xs: 1 }, width: { md: 500 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <Typography color="#4B6889" fontWeight={600} variant="h4" component="div">
+                            {!latestName ? (<Skeleton variant="rounded" animation="wave" height={40} width='50%' />) : (<Typography color="#4B6889" fontWeight={600} variant="h4" component="div">
                                 {latestName?.key}
-                            </Typography>
+                            </Typography>)}
+
                         </Box>
                         <a href="https://maps.app.goo.gl/5HiU8w7CMSzupG7y9" target="_blank" rel="noopener noreferrer">
                             <Chip href="https://maps.app.goo.gl/5HiU8w7CMSzupG7y9" className="location" size="small" label={"คณัสนันท์ คอร์ดแบดมินตัน"} />
@@ -195,33 +198,40 @@ function RegistBadminton() {
                                     เพิ่มจ้า
                                 </Button>
                             </Stack>
-                            <List dense sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                                {data.map((data) => {
-                                    const labelId = data.key;
-                                    return (
-                                        <ListItem
-                                            key={data.key}
-                                            disablePadding
-                                        >
-                                            <ListItemButton>
-                                                <ListItemAvatar sx={{ mr: { md: 2, xs: 1 }, minWidth: '40px', borderRadius: '100%', overflow: 'hidden', backgroundColor: '#cdecf9' }}>
-                                                    <DiceBearAvatar seed={generateSeed(data.key)} />
-                                                </ListItemAvatar>
-                                                <ListItemText id={labelId} primary={data.props.name} />
-                                                <IconButton aria-label="delete" size="large" onClick={() => handleDelete(labelId)}>
-                                                    <DeleteIcon />
-                                                </IconButton>
+                            {usersLoading ?
+                                (<List dense sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                                    {[...Array(5)].map(function (object, i) {
+                                        return userSkeleton();
+                                    })}
+                                </List>) :
+                                (<List dense sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                                    {data.map((data) => {
+                                        const labelId = data.key;
 
-                                            </ListItemButton>
-                                        </ListItem>
-                                    );
-                                })}
-                            </List>
+                                        return (
+                                            <ListItem
+                                                key={data.key}
+                                                disablePadding
+                                            >
+                                                <ListItemButton>
+                                                    <ListItemAvatar sx={{ mr: { md: 2, xs: 1 }, minWidth: '40px', aspectRatio: '1', borderRadius: '100%', overflow: 'hidden', backgroundColor: '#cdecf9' }}>
+                                                        <DiceBearAvatar seed={generateSeed(data.key)} />
+                                                    </ListItemAvatar>
+                                                    <ListItemText id={labelId} primary={data.props.name} />
+                                                    <IconButton aria-label="delete" size="large" onClick={() => handleDelete(labelId)}>
+                                                        <DeleteIcon />
+                                                    </IconButton>
+
+                                                </ListItemButton>
+                                            </ListItem>
+                                        );
+                                    })}
+                                </List>)}
                         </Box>
                     </div>
                 </div>
             </div>
-            
+
 
         </div>
 
