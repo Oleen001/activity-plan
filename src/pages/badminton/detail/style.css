@@ -1,0 +1,180 @@
+.card-wrapper {
+    position: relative;
+}
+
+.card-oleen {
+    min-width: 140px;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+
+
+
+.bg-card {
+    border-radius: 8px;
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: -2;
+}
+
+.bg-card::before {
+    background-image: linear-gradient(165deg, var(--start-color), var(--end-color));
+    border: 12px solid transparent;
+    background-clip: padding-box;
+    content: "";
+    filter: blur(36px);
+    height: 100%;
+    opacity: .8;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+.bg1 {
+    animation: bt-bg1_oleen 8s infinite;
+}
+
+.bg1::before {
+    --start-color: #00dfd8;
+    --end-color: #007cf0;
+}
+
+.bg2 {
+    animation: bt-bg2_oleen 8s infinite;
+}
+
+.bg2::before {
+    --start-color: #ff0080;
+    --end-color: #7928ca;
+}
+
+
+.bg3 {
+    animation: bt-bg3_oleen 8s infinite;
+}
+
+.bg3::before {
+    --start-color: #6382ff;
+    --end-color: #d69cff;
+}
+
+
+
+@keyframes bt-bg1_oleen {
+
+    0%,
+    16.667%,
+    100% {
+        opacity: 0.25;
+    }
+
+    33%,
+    83.333% {
+        opacity: 0;
+    }
+
+}
+
+@keyframes bt-bg2_oleen {
+
+    0%,
+    16.667%,
+    66.667%,
+    100% {
+        opacity: 0;
+    }
+
+    33.333%,
+    50% {
+        opacity: 0.25;
+    }
+
+}
+
+@keyframes bt-bg3_oleen {
+
+    0%,
+    50%,
+    100% {
+        opacity: 0;
+    }
+
+    66.667%,
+    83.333% {
+        opacity: 0.25;
+    }
+
+}
+
+
+
+.top-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    background: white;
+
+    .header {
+        color: #ffffff50;
+        background: #2E4B6B;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .location {
+        color: #82A1C4 !important;
+        background-color: #D9E9FB;
+    }
+
+}
+
+.mid-content {
+    display: flex;
+    flex-direction: row;
+
+    .left-notch {
+        background: white;
+        width: 12px;
+        height: 24px;
+        clip-path: path("M16 -8H-4V0.682823C-2.74888 0.240617 -1.40254 0 0 0C6.62742 0 12 5.37258 12 12C12 18.6274 6.62742 24 0 24C-1.40254 24 -2.74888 23.7594 -4 23.3172V32H16V-8Z"
+            );
+    }
+
+    .rip {
+        flex-grow: 1;
+        background: white;
+        display: flex;
+        align-items: center;
+
+        .dash {
+            width: 100%;
+            border-top: 1px dashed rgba(0, 0, 0, 0.16);
+        }
+    }
+
+    .right-notch {
+        background: white;
+        width: 12px;
+        height: 24px;
+        clip-path: path("M16 -8H-4V32H16V23.3172C14.7489 23.7594 13.4025 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C13.4025 0 14.7489 0.240617 16 0.682823V-8Z"
+            );
+    }
+}
+
+.bot-content {
+    background: white;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+}

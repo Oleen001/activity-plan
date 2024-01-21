@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { IconButton, LinearProgress, Skeleton, Chip, Typography, TextField, Stack, Button, Box, ListItemAvatar, ListItemText, ListItemButton, ListItem, List } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
-import DiceBearAvatar from "../avatar";
+import DiceBearAvatar from '../../avatar'
 
 
-function RegistBadminton() {
+function RegistBadmintonDetail() {
     const [newUserName, setNewUserName] = useState('');
     const [progress, setProgress] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -143,16 +143,15 @@ function RegistBadminton() {
             <div className="bg-card bg1"></div>
             <div className="bg-card bg2"></div>
             <div className="bg-card bg3"></div>
-            <div className='card' sx={{ display: 'flex', flexDirection: 'column', borderRadius: 3 }}>
-                <div class="card4">
-                    <div class="top-content">
-                        <div class="header">
+            <div className='card-oleen'>
+                    <div className="top-content" >
+                        <div className="header">
                             • B A D M I N T O N • T I C K E T •
                         </div>
                         <Box sx={{ width: '100%' }}>
                             {loading && <LinearProgress variant="determinate" value={progress} />}
                         </Box>
-                        <Box sx={{ padding: { md: 3, xs: 1 }, width: { md: 500 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <Box sx={{ padding: { md: 3, xs: 2 }, width: { md: 500 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                             {!latestName ? (<Skeleton variant="rounded" animation="wave" height={40} width='50%' />) : (<Typography color="#4B6889" fontWeight={600} variant="h4" component="div">
                                 {latestName?.key}
                             </Typography>)}
@@ -163,16 +162,15 @@ function RegistBadminton() {
                         </a>
 
                     </div>
-
-                    <div class="mid-content">
-                        <div class="left-notch"></div>
-                        <div class="rip">
-                            <div class="dash"></div>
+                    <div className="mid-content">
+                        <div className="left-notch"></div>
+                        <div className="rip">
+                            <div className="dash"></div>
                         </div>
-                        <div class="right-notch"></div>
+                        <div className="right-notch"></div>
                     </div>
-                    <div class="bot-content">
-                        <Box sx={{ padding: { md: 3, xs: 1 }, width: { md: 500 }, display: 'flex', flexDirection: 'column' }}>
+                    <div className="bot-content">
+                        <Box sx={{ padding: { md: 3, xs: 2 }, width: { md: 500 }, display: 'flex', flexDirection: 'column' }}>
 
                             <Stack
                                 direction="row"
@@ -229,13 +227,10 @@ function RegistBadminton() {
                                 </List>)}
                         </Box>
                     </div>
-                </div>
             </div>
-
-
         </div>
 
     );
 }
 
-export default RegistBadminton;
+export default RegistBadmintonDetail;

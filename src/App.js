@@ -1,11 +1,17 @@
 import './App.css';
-import RegistBadminton from './pages/badminton';
+import RegistBadmintonDetail from './pages/badminton/detail';
+import RegistBadmintonList from './pages/badminton/list';
 import * as React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
 
 function App() {
   return (
     <div className='app-body'>
-      <RegistBadminton></RegistBadminton>
+      <Routes>
+        <Route path="/" element={<RegistBadmintonDetail />} />
+        <Route path="/list" element={<RegistBadmintonList />} />
+      </Routes>
     </div>
   );
 }
