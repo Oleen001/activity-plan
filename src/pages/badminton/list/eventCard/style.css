@@ -1,0 +1,16 @@
+.oleen-event-card {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    padding-left: 16px;
+    overflow: visible;
+    border-radius: 8px;
+}
+.oleen-ribbin {
+    width: 48px;
+    border-radius: 0px 8px 8px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(191deg, #84C4FF 2.92%, #3450B4 100%);
+}

@@ -1,18 +1,23 @@
 import "./style.css";
 import { Box } from "@mui/material";
+import EventCard from "./eventCard";
 
 
 function BadmintonList() {
 
     return (
         <div className="card-wrapper">
-            <div className="bg-card bg1"></div>
-            <div className="bg-card bg2"></div>
-            <div className="bg-card bg3"></div>
-            <div className='card' sx={{ display: 'flex', flexDirection: 'column', borderRadius: 3 }}>
-                <Box sx={{ padding: { md: 3, xs: 1 }, width: { md: 500 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    List Page
-                </Box>
+            <div className="oleen-bg-card bg1"></div>
+            <div className="oleen-bg-card bg2"></div>
+            <div className="oleen-bg-card bg3"></div>
+            <div className='oleen-card' >
+                <div className="event-list" >
+                    <EventCard></EventCard>
+                    <EventCard></EventCard>
+                    <EventCard></EventCard>
+                    <EventCard></EventCard>
+                    <EventCard></EventCard>
+                </div>
             </div>
         </div>
     )
