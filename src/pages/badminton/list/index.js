@@ -1,5 +1,4 @@
 import "./style.css";
-import { Box } from "@mui/material";
 import EventCard from "./eventCard";
 
 
