@@ -2,6 +2,7 @@
   "name": "activity-plan",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://oleen-activity.netlify.app/",
   "dependencies": {
     "@dicebear/avatars": "^4.10.8",
     "@dicebear/avatars-avataaars-sprites": "^4.10.8",
