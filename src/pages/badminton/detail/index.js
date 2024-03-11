@@ -203,7 +203,7 @@ function RegistBadmintonDetail() {
                                     })}
                                 </List>) :
                                 (<List dense sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                                    {data.map((data) => {
+                                    {data.map((data, index) => {
                                         const labelId = data.key;
 
                                         return (
@@ -215,7 +215,7 @@ function RegistBadmintonDetail() {
                                                     <ListItemAvatar sx={{ mr: { md: 2, xs: 1 }, minWidth: '40px', aspectRatio: '1', borderRadius: '100%', overflow: 'hidden', backgroundColor: '#cdecf9' }}>
                                                         <DiceBearAvatar seed={generateSeed(data.key)} />
                                                     </ListItemAvatar>
-                                                    <ListItemText id={labelId} primary={data.props.name} />
+                                                    <ListItemText id={labelId} primary={`${index + 1}. ${data.props.name}`} />
                                                     <IconButton aria-label="delete" size="large" onClick={() => handleDelete(labelId)}>
                                                         <DeleteIcon />
                                                     </IconButton>
