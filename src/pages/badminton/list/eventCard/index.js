@@ -5,7 +5,8 @@ import bmt from "./EventBadminton.lottie"
 import { Box, Typography } from "@mui/material";
 import PinIcon from "./pin.svg"
 
-function EventCard() {
+function EventCard(props) {
+    let {name, date, isRunning} = props;
 
     return (
         <Box className="oleen-event-card" sx={{ width: { md: 500 }, position: "relative"}}>
@@ -16,8 +17,8 @@ function EventCard() {
                 loop
             />
             <Box sx={{ display: "flex", flexDirection: "column", p: { xs: 2, md: 3 }, flexGrow: 1 , justifyContent: "center"}}>
-                <Typography fontFamily="Inter" color="#4E6B95" fontWeight={500} variant="h5" component="div">Name 12345</Typography>
-                <Typography fontFamily="Inter" color="#C6D6E4" fontWeight={400} variant="p" component="div">Des 123 dasd</Typography>
+                <Typography fontFamily="Inter" color="#4E6B95" fontWeight={500} variant="h5" component="div">{name}</Typography>
+                <Typography fontFamily="Inter" color="#C6D6E4" fontWeight={400} variant="p" component="div">{date}x PPl</Typography>
             </Box>
             <div className="oleen-ribbin">
                 <svg width={40} height={40} >
