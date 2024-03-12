@@ -31,7 +31,7 @@ function RegistBadmintonDetail() {
         try {
             setUsersLoading(true);
             const res = await axios.get(`https://oleen-activity.cyclic.app/api/users/`);
-            setData(res.data.results);
+            setData(res.data.results.sort((a, b) => new Date(a.props.created) - new Date(b.props.created)));
         } catch (err) {
             console.error(err);
         } finally {
