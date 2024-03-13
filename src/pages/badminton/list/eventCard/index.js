@@ -9,7 +9,7 @@ function EventCard({ name = '', participant = 0, isPinned = true }) {
     return (
         <Box className="oleen-event-card" sx={{ width: "100%", position: "relative" }}>
             <DotLottiePlayer
-                style={{ height: "120px", width: "auto", paddingTop: "8px" }}
+                style={{ height: "90px", width: "90px", paddingTop: "8px", alignSelf:"center"}}
                 src={bmt}
                 autoplay
                 loop

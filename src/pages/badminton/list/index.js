@@ -31,7 +31,7 @@ function BadmintonList() {
 
     return (
         <div className="card-wrapper">
-            <List dense sx={{ width: '100%' }}>
+            <List  sx={{ width: '100%'}}>
                 {activities.map((data) => {
                     console.log(data);
                     return (
