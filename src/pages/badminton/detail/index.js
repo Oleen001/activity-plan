@@ -166,7 +166,7 @@ function RegistBadmintonDetail() {
                     >
                         <ArrowBackIcon />
                     </IconButton>
-                        {!activity ? (<Skeleton variant="rounded" animation="wave" height={40} width='50%' />) : (<Typography color="#4B6889" fontWeight={600} variant="h4" component="div">
+                        {!activity ? (<Skeleton variant="rounded" animation="wave" height={40} width='50%' />) : (<Typography mr={2} width="100%" color="#4B6889" fontWeight={600} variant="h5" component="div" align="center">
                             {activity?.name}
                         </Typography>)}
 
