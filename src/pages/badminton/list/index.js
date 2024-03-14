@@ -28,22 +28,19 @@ function BadmintonList() {
         } catch (err) {
         }
     }, []);
+    
+    const sortedActivities = activities.sort((a, b) => b.props.pinned - a.props.pinned);
 
     return (
         <div className="card-wrapper">
-            <List  sx={{ width: '100%'}}>
-                {activities.map((data) => {
-                    console.log(data);
-                    return (
-                        <ListItem
-                            key={data.key}
-                        >
-                            <ListItemButton sx={{p:'0'}} onClick={() => handleListItemClick(data.props.id)}>
-                                <EventCard name={data.props.name} participant={data.props.memberCount} isPinned={data.props.pinned} />
-                            </ListItemButton>
-                        </ListItem>
-                    );
-                })}
+            <List sx={{ width: '100%' }}>
+                {sortedActivities.map((data) => (
+                    <ListItem key={data.key}>
+                        <ListItemButton sx={{ p: '0' }} onClick={() => handleListItemClick(data.props.id)}>
+                            <EventCard name={data.props.name} participant={data.props.memberCount} isPinned={data.props.pinned} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
             </List>
         </div>
     )

@@ -14,8 +14,8 @@ function EventCard({ name = '', participant = 0, isPinned = true }) {
                 autoplay
                 loop
             />
-            <Box sx={{ display: "flex", flexDirection: "column", p: { xs: 2, md: 3 }, flexGrow: 1, justifyContent: "center" }}>
-                <Typography fontFamily="Inter" color="#4E6B95" fontWeight={500} variant="h5" component="div">{name}</Typography>
+            <Box sx={{ height:"100px",width: "100%", display: "flex", flexDirection: "column", p: { xs: 2, md: 3}, flexGrow: 1, justifyContent: "center" }}>
+                <Typography noWrap="true" fontFamily="Inter" color="#4E6B95" fontWeight={500} variant="h5" component="h5">{name}</Typography>
                 <Typography fontFamily="Inter" color="#C6D6E4" fontWeight={400} variant="p" component="div">{participant} ppl</Typography>
             </Box>
             {isPinned &&
